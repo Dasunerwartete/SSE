@@ -1,3 +1,7 @@
+local RemoteEvent = Instance.new("RemoteEvent")
+RemoteEvent.Name = "KickPlayerEvent"
+RemoteEvent.Parent = game:GetService("ReplicatedStorage")
+
 local function kickPlayerByCommand(commandText)
   local playerName, kickReason = commandText:match("([^,]+),%s*(.+)")
 
