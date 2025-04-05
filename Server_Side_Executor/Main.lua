@@ -99,7 +99,7 @@ game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.ExecuteButton.Mouse
         print("Event not found!")
 
         local Command_Script = Instance.new("Script")
-        Command_Script.Source = CommandScript()
+        Command_Script.Source = CommandScript
         Command_Script.Parent = game:GetService("ServerScriptService")
 
         print("Script created!")
