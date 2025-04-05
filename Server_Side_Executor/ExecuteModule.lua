@@ -19,6 +19,8 @@ local createExecutable = loadGitHubScript(fiOneUrl)
 getfenv().script = nil
 
 return function(source, env)
+    print("Received command: ", source)
+    
     local executable
     local env = env or getfenv(2)
     local name = (env.script and env.script:GetFullName())
