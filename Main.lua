@@ -1,5 +1,9 @@
 print("Update (0.1)")
 
+local HttpService = game:GetService("HttpService")
+
+local ExecuteModule_Url = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/ExecuteModule.lua"
+
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ExecutorGui"
 screenGui.IgnoreGuiInset = true
@@ -63,7 +67,17 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
-local ExecuteModule = Instance.new("ModuleScript")
-ExecuteModule.Name = "ExecuteModule"
+local success, result = pcall(function()
+    return HttpService:GetAsync(ExecuteModule_Url)
+end)
 
-ExecuteModule.Source
+if success then
+  local ExecuteModule = Instance.new("ModuleScript")
+  ExecuteModule.Name = "ExecuteModule"
+  ExecuteModule.Source = result
+  ExecuteModule.Parent = frame
+else
+  warn("Failed to download Lua file from GitHub: " .. result)
+end
+
+
