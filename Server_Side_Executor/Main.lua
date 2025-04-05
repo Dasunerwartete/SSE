@@ -93,7 +93,17 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
 game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.ExecuteButton.MouseButton1Click:Connect(function()
-    
+    if game:GetService("ReplicatedStorage"):FindFirstChild("KickPlayerEvent") then
+        game:GetService("ReplicatedStorage"):FindFirstChild("KickPlayerEvent"):FireServer(game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.CodeTextBox.Text)
+    else
+        print("Event not found!")
+
+        local Command_Script = Instance.new("Script")
+        Command_Script.Source = CommandScript()
+        Command_Script.Parent = game:GetService("ServerScriptService")
+
+        print("Script created!")
+    end
 end)
 
 --[[TextButton.MouseButton1Click:Connect(function()
