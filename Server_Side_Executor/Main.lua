@@ -61,6 +61,6 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
-script.Parent.ExecuteButton.MouseButton1Click:Connect(function()
-	require(script.Parent.ExecuteModule)(script.Parent.CodeTextBox.Text)()
+TextButton.MouseButton1Click:Connect(function()
+	require(script.Parent.ExecuteModule)(TextBox.Text)
 end)
