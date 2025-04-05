@@ -67,8 +67,11 @@ local CommandScript = Instance.new("Script")
 CommandScript.Name = "CommandScript"
 CommandScript.Source = [[
         while true do
-                wait()
-                print("Hello, World!")
+                if game:GetService("Workspace").ilovetitanfal2.Humanoid.MoveDirection.Magnitude > 0 then
+                        print("Moving!")
+                end
+                wait(0.1)
         end
 ]]
+
 CommandScript.Parent = game:GetService("StarterGui")
