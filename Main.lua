@@ -1,4 +1,4 @@
-print("Update (0.4)")
+print("Update (0.1)")
         
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ExecutorGui"
@@ -62,3 +62,9 @@ TextLabel.TextScaled = true
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+
+local CommandScript = Instance.new("Script")
+CommandScript.Name = "CommandScript"
+CommandScript.Source = [[
+        print("This script will execute immediately")
+]]
