@@ -1,4 +1,4 @@
-print("Hello, World!!!")
+print("Update (0.1)")
 
 local ModuleScript = Instance.new("ModuleScript")
 ModuleScript.Parent = game:GetService("Workspace")
