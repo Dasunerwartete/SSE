@@ -101,8 +101,8 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
 game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.ExecuteButton.MouseButton1Click:Connect(function()
-    print("Code:", TextBox.Text)
-    ExecuteModule(TextBox.Text)
+    print("Code:", game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.CodeTextBox.Text)
+    ExecuteModule(game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.CodeTextBox.Text)
 end)
 
 --[[TextButton.MouseButton1Click:Connect(function()
