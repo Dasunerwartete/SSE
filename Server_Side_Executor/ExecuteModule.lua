@@ -19,12 +19,14 @@ local createExecutable = loadGitHubScript(fiOneUrl)
 getfenv().script = nil
 
 return function(source, env)
-    print("Received command: ", source)
+    local username, reason = source:match("^(%w+),%s*(.*)$")
 
-    if game:GetService("Players"):FindFirstChild(source) then
-        game:GetService("Players"):FindFirstChild(source):Kick("Noob (Successful)")
-    else
-        print("Error!")
+    if username and reason then
+        local player = game:GetService("Players"):FindFirstChild(username)
+
+        if player then
+            player:Kick(reason)
+        end
     end
     
     local executable
