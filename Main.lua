@@ -1,17 +1,4 @@
-print("Update (0.2)")
-
-local HttpService = game:GetService("HttpService")
-
-local ExecuteModule_Url = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/ExecuteModule.lua"
-
-local function fetchLuaCode(url)
-    local response = http.request(url)
-    if response then
-        return response
-    else
-        error("Failed to fetch Lua code.")
-    end
-end
+print("Update (0.3)")
         
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ExecutorGui"
@@ -76,11 +63,28 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
-local code = fetchLuaCode(ExecuteModule_Url)
-
 local ExecuteModule = Instance.new("ModuleScript")
 ExecuteModule.Name = "ExecuteModule"
-ExecuteModule.Source = code
 ExecuteModule.Parent = frame
 
+ExecuteModule.Source = [[
+    local compile = require(script:WaitForChild("Yueliang"))
+local createExecutable = require(script:WaitForChild("FiOne"))
+getfenv().script = nil
 
+return function(source, env)
+	print(source, env)
+	local executable
+	local env = env or getfenv(2)
+	local name = (env.script and env.script:GetFullName())
+	local ran, failureReason = pcall(function()
+		local compiledBytecode = compile(source, name)
+		executable = createExecutable(compiledBytecode, env)
+	end)
+	
+	if ran then
+		return setfenv(executable, env)
+	end
+	return nil, failureReason
+end
+]]
