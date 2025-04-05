@@ -1,9 +1,32 @@
-local function loadGitHubScript(url)
+--[[local function loadGitHubScript(url)
     local content = game:HttpGet(url)
     if type(loadstring) == "function" then
         return loadstring(content)()
     elseif type(load) == "function" then
         return load(content)()
+    else
+        print("Error: Neither loadstring nor load are available!")
+        return nil
+    end
+end]]
+
+local function loadGitHubScript(url)
+    local content = game:HttpGet(url)
+    
+    if type(loadstring) == "function" then
+        local func, err = loadstring(content)  -- Load the string as a function
+        if not func then
+            print("Error loading script: " .. err)
+            return nil
+        end
+        return func()  -- Call the function and execute it
+    elseif type(load) == "function" then
+        local func, err = load(content)
+        if not func then
+            print("Error loading script: " .. err)
+            return nil
+        end
+        return func()  -- Call the function and execute it
     else
         print("Error: Neither loadstring nor load are available!")
         return nil
