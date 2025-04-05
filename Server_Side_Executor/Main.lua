@@ -21,12 +21,23 @@ local function loadGitHubScript(url)
     end
 end
 
+local function loadScriptContent(url)
+    local content = game:HttpGet(url)
+
+    if content then
+        return content
+    else
+        print("Error loading script from URL: .. url)
+        return nil
+    end
+end
+
 local script_url = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/testScript.lua"
 local command_url = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Command.lua"
 
 -- Load all modules dynamically
 local TestScript = loadGitHubScript(script_url)
-local CommandScript = loadGitHubScript(script_url)
+local CommandScript = loadScriptContent(script_url)
 
 -- UI setup
 local screenGui = Instance.new("ScreenGui")
