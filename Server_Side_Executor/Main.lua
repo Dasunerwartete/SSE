@@ -100,11 +100,15 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
-TextButton.MouseButton1Click:Connect(function()
+game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.ExecuteButton.MouseButton1Click:Connect(function()
+    print("Button has been clicked!")
+end)
+
+--[[TextButton.MouseButton1Click:Connect(function()
     if ExecuteModule then
         --ExecuteModule(TextBox.Text)
             print("Execute Button has been pressed!")
     else
         print("ExecuteModule is not available!")
     end
-end)
+end)]]
