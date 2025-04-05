@@ -16,8 +16,6 @@ local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/r
 local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/Yueliang.lua"
 local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/FiOne.lua"
 
-script_url()
-
 -- Load all modules dynamically
 local TestScript = loadGitHubScript(script_url)
 local ExecuteModule = loadGitHubScript(executeModuleUrl)
