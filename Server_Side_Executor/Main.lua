@@ -11,9 +11,9 @@ local function loadGitHubScript(url)
 end
 
 -- URLs of the module scripts on GitHub
-local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/ExecuteModule.lua"
-local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/Yueliang.lua"
-local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/FiOne.lua"
+local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/ExecuteModule.lua"
+local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/Yueliang.lua"
+local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/FiOne.lua"
 
 -- Load all modules dynamically
 local ExecuteModule = loadGitHubScript(executeModuleUrl)
