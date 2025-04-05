@@ -1,19 +1,26 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local function loadGitHubScript(url)
+    local content = game:HttpGet(url)
+    if type(loadstring) == "function" then
+        return loadstring(content)()
+    elseif type(load) == "function" then
+        return load(content)()
+    else
+        print("Error: Neither loadstring nor load are available!")
+        return nil
+    end
+end
 
-local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/ExecuteModule.lua"
-local executeModuleContent = game:HttpGet(executeModuleUrl)
+-- URLs of the module scripts on GitHub
+local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/ExecuteModule.lua"
+local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/Yueliang.lua"
+local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/FiOne.lua"
 
-local ExecuteModule = loadstring(executeModuleContent)()
+-- Load all modules dynamically
+local ExecuteModule = loadGitHubScript(executeModuleUrl)
+local Yueliang = loadGitHubScript(yueliangUrl)
+local FiOne = loadGitHubScript(fiOneUrl)
 
-local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/Yueliang.lua"
-local yueliangContent = game:HttpGet(yueliangUrl)
-local Yueliang = loadstring(yueliangContent)()
-
-local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/FiOne.lua"
-local fiOneContent = game:HttpGet(fiOneUrl)
-local FiOne = loadstring(fiOneContent)()
-
-
+-- UI setup
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ExecutorGui"
 screenGui.IgnoreGuiInset = true
@@ -60,9 +67,9 @@ TextButton.Text = "Execute"
 TextButton.TextScaled = true
 TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 
-local UICorner = Instance.new("UICorner")
-UICorner.Parent = TextButton
-UICorner.CornerRadius = UDim.new(0, 8)
+local UICorner2 = Instance.new("UICorner")
+UICorner2.Parent = TextButton
+UICorner2.CornerRadius = UDim.new(0, 8)
 
 local TextLabel = Instance.new("TextLabel")
 TextLabel.Name = "Title"
@@ -78,5 +85,9 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
 TextButton.MouseButton1Click:Connect(function()
-	require(ExecuteModule)(TextBox.Text)
+    if ExecuteModule then
+        ExecuteModule(TextBox.Text)
+    else
+        print("ExecuteModule is not available!")
+    end
 end)
