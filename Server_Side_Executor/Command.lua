@@ -14,3 +14,7 @@ local function kickPlayerByCommand(commandText)
     end
   end
 end
+
+RemoteEvent.OnServerEvent:Connect(function(player, data)
+    print(data)
+end)
