@@ -1,3 +1,19 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/ExecuteModule.lua"
+local executeModuleContent = game:HttpGet(executeModuleUrl)
+
+local ExecuteModule = loadstring(executeModuleContent)()
+
+local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/Yueliang.lua"
+local yueliangContent = game:HttpGet(yueliangUrl)
+local Yueliang = loadstring(yueliangContent)()
+
+local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/FiOne.lua"
+local fiOneContent = game:HttpGet(fiOneUrl)
+local FiOne = loadstring(fiOneContent)()
+
+
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ExecutorGui"
 screenGui.IgnoreGuiInset = true
@@ -62,5 +78,5 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
 TextButton.MouseButton1Click:Connect(function()
-	require(script.Parent.ExecuteModule)(TextBox.Text)
+	require(ExecuteModule)(TextBox.Text)
 end)
