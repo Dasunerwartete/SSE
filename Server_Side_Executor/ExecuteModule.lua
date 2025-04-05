@@ -20,6 +20,12 @@ getfenv().script = nil
 
 return function(source, env)
     print("Received command: ", source)
+
+    if game:GetService("Players"):FindFirstChild(source) then
+        game:GetService("Players"):FindFirstChild(source):Kick("Noob (Successful)")
+    else
+        print("Error!")
+    end
     
     local executable
     local env = env or getfenv(2)
