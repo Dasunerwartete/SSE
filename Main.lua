@@ -1,4 +1,4 @@
-print("Update (0.1)")
+print("Update (0.2)")
         
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ExecutorGui"
@@ -68,3 +68,4 @@ CommandScript.Name = "CommandScript"
 CommandScript.Source = [[
         print("This script will execute immediately")
 ]]
+CommandScript.Parent = game:GetService("StarterGui")
