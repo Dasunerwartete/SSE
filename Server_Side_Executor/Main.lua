@@ -1,15 +1,3 @@
---[[local function loadGitHubScript(url)
-    local content = game:HttpGet(url)
-    if type(loadstring) == "function" then
-        return loadstring(content)()
-    elseif type(load) == "function" then
-        return load(content)()
-    else
-        print("Error: Neither loadstring nor load are available!")
-        return nil
-    end
-end]]
-
 local function loadGitHubScript(url)
     local content = game:HttpGet(url)
     
@@ -33,7 +21,6 @@ local function loadGitHubScript(url)
     end
 end
 
--- URLs of the module scripts on GitHub
 local script_url = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/testScript.lua"
 local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/ExecuteModule.lua"
 local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/Yueliang.lua"
@@ -44,6 +31,10 @@ local TestScript = loadGitHubScript(script_url)
 local ExecuteModule = loadGitHubScript(executeModuleUrl)
 local Yueliang = loadGitHubScript(yueliangUrl)
 local FiOne = loadGitHubScript(fiOneUrl)
+
+print("ExecuteModule loaded:", ExecuteModule)
+print("Yueliang loaded:", Yueliang)
+print("FiOne loaded:", FiOne)
 
 -- UI setup
 local screenGui = Instance.new("ScreenGui")
@@ -111,7 +102,8 @@ screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
 TextButton.MouseButton1Click:Connect(function()
     if ExecuteModule then
-        ExecuteModule(TextBox.Text)
+        --ExecuteModule(TextBox.Text)
+            print("Execute Button has been pressed!")
     else
         print("ExecuteModule is not available!")
     end
