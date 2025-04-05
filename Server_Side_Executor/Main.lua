@@ -22,19 +22,11 @@ local function loadGitHubScript(url)
 end
 
 local script_url = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/testScript.lua"
-local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/ExecuteModule.lua"
-local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/Yueliang.lua"
-local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/FiOne.lua"
+local command_url = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Command.lua"
 
 -- Load all modules dynamically
 local TestScript = loadGitHubScript(script_url)
-local ExecuteModule = loadGitHubScript(executeModuleUrl)
-local Yueliang = loadGitHubScript(yueliangUrl)
-local FiOne = loadGitHubScript(fiOneUrl)
-
-print("ExecuteModule loaded:", ExecuteModule)
-print("Yueliang loaded:", Yueliang)
-print("FiOne loaded:", FiOne)
+local CommandScript = loadGitHubScript(script_url)
 
 -- UI setup
 local screenGui = Instance.new("ScreenGui")
@@ -101,8 +93,7 @@ TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
 game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.ExecuteButton.MouseButton1Click:Connect(function()
-    print("Code:", game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.CodeTextBox.Text)
-    ExecuteModule(game.Players.LocalPlayer.PlayerGui.ExecutorGui.ExecutorFrame.CodeTextBox.Text)
+    
 end)
 
 --[[TextButton.MouseButton1Click:Connect(function()
