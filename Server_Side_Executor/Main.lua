@@ -1,15 +1,15 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/ExecuteModule.lua"
+local executeModuleUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/ExecuteModule.lua"
 local executeModuleContent = game:HttpGet(executeModuleUrl)
 
 local ExecuteModule = loadstring(executeModuleContent)()
 
-local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/Yueliang.lua"
+local yueliangUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/Yueliang.lua"
 local yueliangContent = game:HttpGet(yueliangUrl)
 local Yueliang = loadstring(yueliangContent)()
 
-local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/main/Server_Side_Executor/Modules/FiOne.lua"
+local fiOneUrl = "https://raw.githubusercontent.com/Dasunerwartete/SSE/refs/heads/main/Server_Side_Executor/Modules/FiOne.lua"
 local fiOneContent = game:HttpGet(fiOneUrl)
 local FiOne = loadstring(fiOneContent)()
 
